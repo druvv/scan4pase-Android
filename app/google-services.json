@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "114411491278",
+    "firebase_url": "https://project-2924719563810163534.firebaseio.com",
+    "project_id": "project-2924719563810163534",
+    "storage_bucket": "project-2924719563810163534.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114411491278:android:275f1ddc9489acf6",
+        "android_client_info": {
+          "package_name": "com.ebuyworld.scan4pase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114411491278-lbv6pi2su062ufefq8h8d49r85d6f9ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrlvkSIljSGaLBIYam5m5m7GBg3htsSME"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

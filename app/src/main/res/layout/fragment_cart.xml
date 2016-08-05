@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10sp">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listview_cart"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@android:layout/simple_list_item_2">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment_cart_pvbvtotal_label"
+                android:id="@+id/fragment_cart_pvbvtotal_label"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/fragment_cart_pvbvtotal"
+                android:id="@+id/fragment_cart_pvbvtotal"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_cart_subtotal_label"
+                android:text="@string/fragment_cart_subtotal_label"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:id="@+id/fragment_cart_subtotal"
+                android:text="@string/fragment_cart_subtotal"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_cart_grandTotal_label"
+                android:text="@string/fragment_cart_grandTotal_label"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:id="@+id/fragment_cart_grandTotal"
+                android:text="@string/fragment_cart_grandTotal"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -14,14 +14,15 @@
             android:layout_height="wrap_content"
             android:text="@string/list_product_sku"
             android:textSize="16sp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorCustom"
             android:id="@+id/list_product_sku"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/list_product_name"
             android:textSize="14sp"
-            android:id="@+id/list_product_name" />
+            android:id="@+id/list_product_name"
+            android:ellipsize="end" />
     </LinearLayout>
 
     <!-- Costs Vertical Linear Layout -->
@@ -43,7 +44,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:gravity="right"
                 android:layout_height="match_parent"
                 android:text="@string/list_product_ibocost"
