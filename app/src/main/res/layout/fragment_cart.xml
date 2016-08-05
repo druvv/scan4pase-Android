@@ -77,4 +77,14 @@
         </LinearLayout>
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/fragment_cart_createInvoice_btn"
+        android:text="@string/fragment_cart_createInvoice_btn"
+        android:textSize="16sp"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="#ffffff" />
+
 </LinearLayout>
