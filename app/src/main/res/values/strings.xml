@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">scan4pase</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <!-- List Product -->
+    <string name="list_product_sku">A4300</string>
+    <string name="list_product_name">Nutrilite Double X® Vitamin/Mineral/Phytonutrient Supplement – 31-day supply with 3-compartment case</string>
+    <string name="list_product_ibocost_label">IBO:</string>
+    <string name="list_product_retialcost_label">Retail:</string>
+    <string name="list_product_pvbv_label">PV/BV:</string>
+    <string name="list_product_ibocost">$25</string>
+    <string name="list_product_retialcost">$400</string>
+    <string name="list_product_pvbv">100/100</string>
+
+</resources>
