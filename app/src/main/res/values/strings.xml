@@ -8,7 +8,7 @@
     <string name="list_product_sku">A4300</string>
     <string name="list_product_name">Nutrilite Double X® Vitamin/Mineral/Phytonutrient Supplement – 31-day supply with 3-compartment case</string>
     <string name="list_product_ibocost_label">IBO:</string>
-    <string name="list_product_retialcost_label">Retail:</string>
+    <string name="list_product_retailcost_label">Retail:</string>
     <string name="list_product_pvbv_label">PV/BV:</string>
     <string name="list_product_ibocost">$25</string>
     <string name="list_product_retialcost">$400</string>
@@ -19,8 +19,8 @@
     <string name="fragment_cart_subtotal_label">Subtotal (IBO / Retail) :</string>
     <string name="fragment_cart_grandTotal_label">Grand Total (IBO / Retail) :</string>
     <string name="fragment_cart_pvbvtotal">0.00 / 0.00</string>
-    <string name="fragment_cart_subtotal">$3.80 / $3.80</string>
-    <string name="fragment_cart_grandTotal">$4.03 / $4.03</string>
+    <string name="fragment_cart_subtotal">$0.00 / $0.00</string>
+    <string name="fragment_cart_grandTotal">$0.00 / $0.00</string>
     <string name="fragment_cart_createInvoice_btn">CREATE INVOICE</string>
 
     <!-- TODO: Remove or change this placeholder text -->

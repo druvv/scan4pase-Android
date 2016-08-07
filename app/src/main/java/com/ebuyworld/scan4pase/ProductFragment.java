@@ -1,54 +1,56 @@
 package com.ebuyworld.scan4pase;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.ebuyworld.scan4pase.webservice.ProductManager;
+import io.realm.Realm;
+import io.realm.RealmResults;
+import com.ebuyworld.scan4pase.models.*;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CartFragment.OnFragmentInteractionListener} interface
+ * {@link ProductFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CartFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
-public class CartFragment extends Fragment {
+public class ProductFragment extends Fragment {
+    private RealmResults<CartProduct> cartProducts;
+
 
     private OnFragmentInteractionListener mListener;
 
-    public CartFragment() {
-        // Required empty public constructor
+    public ProductFragment() {
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_cart, container);
+        View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
         return rootView;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -68,7 +70,6 @@ public class CartFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onCreateInvoiceClicked();
     }
 }
