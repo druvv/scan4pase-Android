@@ -16,7 +16,7 @@ public class MyApplication extends Application {
     }
 
     private void setupRealm() {
-        RealmConfiguration configuration = new RealmConfiguration.Builder(this).build();
+        RealmConfiguration configuration = new RealmConfiguration.Builder(this).deleteRealmIfMigrationNeeded().build();
         Realm.setDefaultConfiguration(configuration);
     }
 }

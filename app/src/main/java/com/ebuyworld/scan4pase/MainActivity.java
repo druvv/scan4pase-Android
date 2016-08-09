@@ -12,6 +12,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ebuyworld.scan4pase.models.CartProduct;
+
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
+
 
 public class MainActivity extends AppCompatActivity implements CartFragment.OnFragmentInteractionListener {
 
@@ -81,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements CartFragment.OnFr
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            Realm.getDefaultInstance().addChangeListener(realmChangeListener);
         }
 
         @Override
@@ -95,11 +102,24 @@ public class MainActivity extends AppCompatActivity implements CartFragment.OnFr
             return 1;
         }
 
+        private int getCartProductCount() {
+            RealmResults<CartProduct> cartProducts = Realm.getDefaultInstance().where(CartProduct.class).findAll();
+            return cartProducts.sum("quantity").intValue();
+        }
+
+        private RealmChangeListener<Realm> realmChangeListener = new RealmChangeListener<Realm>() {
+            @Override
+            public void onChange(Realm element) {
+                notifyDataSetChanged();
+            }
+        };
+
+
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Cart (0)";
+                    return "Cart (" + String.valueOf(getCartProductCount()) + ")";
             }
             return null;
         }

@@ -47,7 +47,7 @@ public class CartProductAdapter extends RealmBaseAdapter<CartProduct> implements
         viewHolder.pvBvView.setText(context.getResources().getString(R.string.list_product_pvbv, mPointFormatter.format(product.getPv()), mPointFormatter.format(product.getBv())));
         viewHolder.iboCostView.setText(mCurrencyFormatter.format(product.getIboCost()));
         viewHolder.retailCostView.setText(mCurrencyFormatter.format(product.getRetailCost()));
-        viewHolder.quantityView.setText(String.valueOf(cartProduct.quanitity));
+        viewHolder.quantityView.setText(String.valueOf(cartProduct.quantity));
 
         if (product.custom) {
             viewHolder.skuView.setTextColor(context.getResources().getColor(R.color.colorAccent));

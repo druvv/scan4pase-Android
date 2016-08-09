@@ -31,9 +31,9 @@ public class CartFragment extends Fragment {
     private RealmChangeListener<RealmResults<CartProduct>> mCartProductChangeListener = new RealmChangeListener<RealmResults<CartProduct>>() {
         @Override
         public void onChange(RealmResults<CartProduct> cartProducts) {
-
+            calculateTotals();
         }
-    }
+    };
 
 
     private OnFragmentInteractionListener mListener;
@@ -58,7 +58,7 @@ public class CartFragment extends Fragment {
                     Realm realm = Realm.getDefaultInstance();
                     realm.beginTransaction();
                     CartProduct cartProduct = realm.createObject(CartProduct.class);
-                    cartProduct.quanitity = 3;
+                    cartProduct.quantity = 3;
                     cartProduct.taxable = true;
                     cartProduct.product = realm.where(Product.class).contains("sku","A4300").findFirst();
                     realm.commitTransaction();
@@ -91,6 +91,7 @@ public class CartFragment extends Fragment {
         return rootView;
     }
 
+    // TODO: Implement This
     private void calculateTotals() {
 
     }
