@@ -4,15 +4,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/white">
 
     <ListView
         android:layout_width="match_parent"
-        android:id="@+id/listView_cart"
+        android:id="@+id/fragment_cart_listView"
         android:layout_height="0dp"
         android:layout_weight="1">
     </ListView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_cart_emptyCartView">
+        <TextView
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_cart_emptyCart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="21sp"
+            android:layout_gravity="center_horizontal" />
+    </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

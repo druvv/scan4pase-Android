@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="70sp"
+    android:layout_height="76dp"
     android:baselineAligned="false">
     <!-- SKU and Name Vertical Linear Layout -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -15,14 +15,16 @@
             android:text="@string/list_product_sku"
             android:textSize="16sp"
             android:textColor="@color/colorPrimary"
-            android:id="@+id/list_product_sku"/>
+            android:id="@+id/list_cartproduct_sku"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/list_product_name"
-            android:textSize="14sp"
-            android:id="@+id/list_product_name"
-            android:ellipsize="end" />
+            android:textSize="15sp"
+            android:id="@+id/list_cartproduct_name"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:singleLine="false"/>
     </LinearLayout>
 
     <!-- Costs Vertical Linear Layout -->
@@ -40,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/list_product_ibocost_label"
-                android:id="@+id/list_product_ibocost_label"
+                android:id="@+id/list_cartproduct_ibocost_label"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
@@ -49,7 +51,7 @@
                 android:gravity="right"
                 android:layout_height="match_parent"
                 android:text="@string/list_product_ibocost"
-                android:id="@+id/list_product_ibocost"
+                android:id="@+id/list_cartproduct_ibocost"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -63,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/list_product_retailcost_label"
-                android:id="@+id/list_product_retailcost_label"
+                android:id="@+id/list_cartproduct_retailcost_label"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
@@ -72,7 +74,7 @@
                 android:gravity="right"
                 android:layout_height="match_parent"
                 android:text="@string/list_product_retialcost"
-                android:id="@+id/list_product_retailcost"
+                android:id="@+id/list_cartproduct_retailcost"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -86,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/list_product_pvbv_label"
-                android:id="@+id/list_product_pvbv_label"
+                android:id="@+id/list_cartproduct_pvbv_label"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
@@ -95,11 +97,21 @@
                 android:gravity="right"
                 android:layout_height="wrap_content"
                 android:text="@string/list_product_pvbv"
-                android:id="@+id/list_product_pvBv"
+                android:id="@+id/list_cartproduct_pvBv"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:text="1"
+        android:textSize="21sp"
+        android:padding="10dp"
+        android:id="@+id/list_cartproduct_quantity"
+        android:layout_gravity="center_vertical"/>
 
 </LinearLayout>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="barone-1.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.triposo/barone/1.0/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.triposo/barone/1.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.triposo/barone/1.0/9fabc38027b0bcb6af860a5ac584dcdd2224b01d/barone-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
