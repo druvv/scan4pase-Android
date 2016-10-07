@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Scan4pase Android.iml" filepath="$PROJECT_DIR$/Scan4pase Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scan4pase-android.iml" filepath="$PROJECT_DIR$/scan4pase-android.iml" />
     </modules>
   </component>
 </project>
