@@ -12,12 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
+
+import com.ebuyworld.scan4pase.helper.Helper;
 import com.ebuyworld.scan4pase.models.*;
 import com.ebuyworld.scan4pase.webservice.ProductService;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +37,16 @@ import com.ebuyworld.scan4pase.webservice.ProductService;
  */
 public class CartFragment extends Fragment {
     private RealmResults<CartProduct> cartProducts;
+    private TextView grandTotal;
+    private TextView subtotal;
+    private TextView pvBVTotal;
+
+    private BigDecimal iboCostSubtotal = new BigDecimal(0);
+    private BigDecimal retailCostSubtotal = new BigDecimal(0);
+    private BigDecimal iboCostGrandTotal = new BigDecimal(0);
+    private BigDecimal retailCostGrandTotal = new BigDecimal(0);
+    private BigDecimal pvTotal = new BigDecimal(0);
+    private BigDecimal bvTotal = new BigDecimal(0);
 
     private RealmChangeListener<RealmResults<CartProduct>> mCartProductChangeListener = new RealmChangeListener<RealmResults<CartProduct>>() {
         @Override
@@ -58,7 +78,7 @@ public class CartFragment extends Fragment {
                     Realm realm = Realm.getDefaultInstance();
                     realm.beginTransaction();
                     CartProduct cartProduct = realm.createObject(CartProduct.class);
-                    cartProduct.quantity = 3;
+                    cartProduct.quantity = 5;
                     cartProduct.taxable = true;
                     cartProduct.product = realm.where(Product.class).contains("sku","A4300").findFirst();
                     realm.commitTransaction();
@@ -77,6 +97,10 @@ public class CartFragment extends Fragment {
         Realm realm = Realm.getDefaultInstance();
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
+        grandTotal = (TextView) rootView.findViewById(R.id.fragment_cart_grandTotal);
+        subtotal = (TextView) rootView.findViewById(R.id.fragment_cart_subtotal);
+        pvBVTotal = (TextView) rootView.findViewById(R.id.fragment_cart_pvbvtotal);
+
         ListView listView = (ListView) rootView.findViewById(R.id.fragment_cart_listView);
         cartProducts = realm.where(CartProduct.class).findAll();
         cartProducts.addChangeListener(mCartProductChangeListener);
@@ -91,9 +115,56 @@ public class CartFragment extends Fragment {
         return rootView;
     }
 
-    // TODO: Implement This
     private void calculateTotals() {
+        resetTotals();
 
+        BigDecimal retailCostTaxTotal = new BigDecimal(0);
+
+        for (CartProduct cartProduct : cartProducts) {
+            Product product = cartProduct.product;
+            BigDecimal quantity = new BigDecimal(cartProduct.quantity);
+
+            BigDecimal qPV = product.getPv().multiply(quantity);
+            BigDecimal qBV = product.getBv().multiply(quantity);
+            BigDecimal qRetailCost = product.getRetailCost().multiply(quantity);
+            BigDecimal qIboCost = product.getIboCost().multiply(quantity);
+
+            // TODO: Implement Tax Percentage From Settings
+            if (cartProduct.taxable) {
+                BigDecimal taxPercentage = new BigDecimal("0.06");
+                BigDecimal retailTax = qRetailCost.multiply(taxPercentage);
+                retailCostTaxTotal = retailCostTaxTotal.add(retailTax);
+            }
+
+            pvTotal = pvTotal.add(qPV);
+            bvTotal = bvTotal.add(qBV);
+            retailCostSubtotal = retailCostSubtotal.add(qRetailCost);
+            iboCostSubtotal = iboCostSubtotal.add(qIboCost);
+        }
+
+        retailCostGrandTotal = retailCostSubtotal.add(retailCostTaxTotal);
+        iboCostGrandTotal = iboCostSubtotal.add(retailCostTaxTotal);
+
+        retailCostSubtotal.setScale(2, RoundingMode.HALF_UP);
+        iboCostSubtotal.setScale(2, RoundingMode.HALF_UP);
+        retailCostGrandTotal.setScale(2, RoundingMode.HALF_UP);
+        iboCostGrandTotal.setScale(2, RoundingMode.HALF_UP);
+
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        NumberFormat pointFormatter = Helper.pointFormatter();
+
+        subtotal.setText(currencyFormatter.format(iboCostSubtotal) + " / " + currencyFormatter.format(retailCostSubtotal));
+        grandTotal.setText(currencyFormatter.format(iboCostGrandTotal) + " / " + currencyFormatter.format(retailCostGrandTotal));
+        pvBVTotal.setText(pointFormatter.format(pvTotal) + " / " + pointFormatter.format(bvTotal));
+    }
+
+    private void resetTotals() {
+        iboCostSubtotal = new BigDecimal(0);
+        retailCostSubtotal = new BigDecimal(0);
+        iboCostGrandTotal = new BigDecimal(0);
+        retailCostGrandTotal = new BigDecimal(0);
+        pvTotal = new BigDecimal(0);
+        bvTotal = new BigDecimal(0);
     }
 
     private void loadProducts() {
