@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MyButtonStyle" parent="ThemeOverlay.AppCompat" >
+    <style name="MyButtonStyle" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
