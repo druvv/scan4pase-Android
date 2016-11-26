@@ -25,7 +25,16 @@
 
         <service android:name=".webservice.ProductService" />
 
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".AddProduct"
+            android:label="@string/title_activity_add_product"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ebuyworld.scan4pase.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -4,7 +4,9 @@ import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
@@ -93,7 +95,6 @@ public class CartFragment extends Fragment {
             }
         };
 
-
     }
 
     @Override
@@ -115,7 +116,13 @@ public class CartFragment extends Fragment {
         FrameLayout emptyCartView = (FrameLayout) rootView.findViewById(R.id.fragment_cart_emptyCartView);
         listView.setEmptyView(emptyCartView);
 
-        loadProducts();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        if (preferences.getBoolean("shouldLoad",true)) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("shouldLoad",false);
+            editor.commit();
+            loadProducts();
+        }
 
         return rootView;
     }
@@ -131,6 +138,8 @@ public class CartFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_add_product:
                 // TODO: Add Launching of Search / Add Activity Here
+                Intent intent = new Intent(getActivity(), AddProduct.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

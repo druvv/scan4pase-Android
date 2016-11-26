@@ -21,12 +21,4 @@ public class Helper {
         pointFormatter.setRoundingMode(RoundingMode.HALF_UP);
         return pointFormatter;
     }
-
-    public static void deleteProduct(Product product, Realm realm) {
-        String sku = product.sku;
-        boolean custom = product.custom;
-        RealmResults<CartProduct> cartProductsToDelete = realm.where(CartProduct.class).equalTo("sku", product.sku).equalTo("custom", product.custom).findAll();
-        cartProductsToDelete.deleteAllFromRealm();
-        product.deleteFromRealm();
-    }
 }

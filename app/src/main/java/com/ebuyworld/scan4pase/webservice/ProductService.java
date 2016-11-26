@@ -195,7 +195,7 @@ public class ProductService extends Service {
 
             for (int i : positionsToDelete) {
                 Product product = products.get(i);
-                Helper.deleteProduct(product,realm);
+                product.deleteFromRealm();
             }
             realm.commitTransaction();
         } catch (IOException e) {
